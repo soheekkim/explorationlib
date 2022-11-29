@@ -303,6 +303,50 @@ def plot_targets2d(env,
 
     return ax
 
+def plot_ALLtargets2D(env,
+                   figsize=(3, 3),
+                   boundary=(1, 1),
+                   color="black",
+                   alpha=1.0,
+                   label=None,
+                   title=None,
+                   ax=None):
+
+    # No targets no plot
+    if env.targets is None:
+        return None
+
+    # Fmt
+    try:
+        vec = np.vstack(env.initial_targets)
+    except AttributeError:
+        vec = np.vstack(env.targets)
+
+    # Create a fig obj?
+    if ax is None:
+        fig = plt.figure(figsize=figsize)
+        ax = fig.add_subplot(111)
+
+    # !
+    a= ax.scatter( #makes scatter plot
+        vec[:, 0],
+        vec[:, 1],
+        c= env.values,
+        label=label,
+        alpha=alpha)
+    ax.set_xlim(-boundary[0], boundary[0])
+    ax.set_ylim(-boundary[1], boundary[1])
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    fig.colorbar(a, label='target values')
+
+    # Labels, legends, titles?
+    if title is not None:
+        ax.set_title(title)
+    if label is not None:
+        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
+    return ax
 
 def plot_position2d(exp_data,
                     boundary=(1, 1),
