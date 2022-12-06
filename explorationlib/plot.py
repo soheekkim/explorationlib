@@ -250,6 +250,7 @@ def plot_scent_grid(env,
     ax.imshow(env.scent_pdf, interpolation=None, cmap=cmap)
     ax.set_xlabel("i")
     ax.set_ylabel("j")
+    
 
     # Labels, legends, titles?
     if title is not None:
@@ -338,7 +339,8 @@ def plot_ALLtargets2D(env,
     ax.set_ylim(-boundary[1], boundary[1])
     ax.set_xlabel("x")
     ax.set_ylabel("y")
-    fig.colorbar(a, label='target values')
+    fig=plt.colorbar(a, label='target values')
+
 
     # Labels, legends, titles?
     if title is not None:
