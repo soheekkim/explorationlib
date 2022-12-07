@@ -339,7 +339,7 @@ def plot_ALLtargets2D(env,
     ax.set_ylim(-boundary[1], boundary[1])
     ax.set_xlabel("x")
     ax.set_ylabel("y")
-    fig=plt.colorbar(a, label='target values')
+    fig=plt.colorbar(a, label='target values', orientation='horizontal')
 
 
     # Labels, legends, titles?
